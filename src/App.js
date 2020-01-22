@@ -26,6 +26,16 @@ class App extends Component {
     })
   };
 
+  nameChangeHandler = (event) => {
+    this.setState( {
+      persons: [ // Sobreescribe persons ya que lo estamos definiendo de nuevo por completo
+        { name: 'Max', age: 28 },
+        { name: event.target.value, age: 29 },
+        { name: 'Stephanie', age: 26 }
+      ]
+    })
+  };
+
   render() {
     return (
       <div className="App">
@@ -41,7 +51,8 @@ class App extends Component {
         />
         <Person
             name={this.state.persons[1].name}
-            age={this.state.persons[1].age}>
+            age={this.state.persons[1].age}
+            changed={this.nameChangeHandler}>
           My Hobbies: Racing
         </Person>
         <Person
