@@ -13,13 +13,13 @@ class App extends Component {
     otherState: 'Cocococococo'
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     console.log('Was clicked!');
     // No hacer esto
     // this.state.persons[0].name = 'Maximilian';
     this.setState( {
       persons: [ // Sobreescribe persons ya que lo estamos definiendo de nuevo por completo
-        { name: 'Maximilian', age: 28 },
+        { name: newName, age: 28 },
         { name: 'Manu', age: 29 },
         { name: 'Stephanie', age: 26 }
       ]
@@ -34,7 +34,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
           <h1>Hi, I'm a React App</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button onClick={() => this.switchNameHandler('Maximilian!!') }>Switch Name</button>
         <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}
@@ -47,6 +47,7 @@ class App extends Component {
         <Person
             name={this.state.persons[2].name}
             age={this.state.persons[2].age}
+            click={this.switchNameHandler.bind(this, 'Max!')}
         />
       </div>
     );
