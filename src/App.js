@@ -39,6 +39,12 @@ class App extends Component {
     })
   };
 
+  nameStateChangeHandler = (event) => {
+    this.setState({
+      userName: event.target.value
+    })
+  };
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -55,7 +61,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
           <h1>Hi, I'm a React App</h1>
-        <UserImput/>
+        <UserImput userName={this.state.userName} changed={this.nameStateChangeHandler}/>
         <UserOutput userName='Jesús'/>
         <UserOutput userName={this.state.userName}/>
         <UserOutput userName='Loco'/>
