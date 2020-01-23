@@ -55,9 +55,9 @@ class App extends Component {
         </header>
           <h1>Hi, I'm a React App</h1>
         <UserImput/>
-        <UserOutput/>
-        <UserOutput/>
-        <UserOutput/>
+        <UserOutput userName='Jesús'/>
+        <UserOutput userName='Coco'/>
+        <UserOutput userName='Loco'/>
         <button
             style={style}
             onClick={() => this.switchNameHandler('Maximilian!!') }>Switch Name</button>
