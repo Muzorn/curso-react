@@ -12,7 +12,8 @@ class App extends Component {
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26 }
     ],
-    otherState: 'Cocococococo'
+    otherState: 'Cocococococo',
+    userName: 'Username State'
   };
 
   switchNameHandler = (newName) => {
@@ -56,7 +57,7 @@ class App extends Component {
           <h1>Hi, I'm a React App</h1>
         <UserImput/>
         <UserOutput userName='Jesús'/>
-        <UserOutput userName='Coco'/>
+        <UserOutput userName={this.state.userName}/>
         <UserOutput userName='Loco'/>
         <button
             style={style}
