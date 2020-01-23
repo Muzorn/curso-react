@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
+import UserImput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   state = {
@@ -52,6 +54,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
           <h1>Hi, I'm a React App</h1>
+        <UserImput/>
+        <UserOutput/>
+        <UserOutput/>
+        <UserOutput/>
         <button
             style={style}
             onClick={() => this.switchNameHandler('Maximilian!!') }>Switch Name</button>
