@@ -13,7 +13,8 @@ class App extends Component {
       { name: 'Stephanie', age: 26 }
     ],
     otherState: 'Cocococococo',
-    userName: 'Username State'
+    userName: 'Username State',
+    showPersons: false
   };
 
   switchNameHandler = (newName) => {
@@ -45,6 +46,11 @@ class App extends Component {
     })
   };
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  };
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -65,24 +71,30 @@ class App extends Component {
         <UserOutput userName='Jesús'/>
         <UserOutput userName={this.state.userName}/>
         <UserOutput userName='Loco'/>
+
         <button
             style={style}
-            onClick={() => this.switchNameHandler('Maximilian!!') }>Switch Name</button>
-        <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-        />
-        <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changed={this.nameChangeHandler}>
-          My Hobbies: Racing
-        </Person>
-        <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-            click={this.switchNameHandler.bind(this, 'Max!')}
-        />
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        { this.state.showPersons ?
+            <div>
+              <Person
+                  name={this.state.persons[0].name}
+                  age={this.state.persons[0].age}
+              />
+              <Person
+                  name={this.state.persons[1].name}
+                  age={this.state.persons[1].age}
+                  changed={this.nameChangeHandler}>
+                My Hobbies: Racing
+              </Person>
+              <Person
+                  name={this.state.persons[2].name}
+                  age={this.state.persons[2].age}
+                  click={this.switchNameHandler.bind(this, 'Max!')}
+              />
+            </div>
+            : null
+        }
       </div>
     );
   }
