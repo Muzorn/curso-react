@@ -80,6 +80,11 @@ class App extends Component {
                 age={this.state.persons[2].age}
                 click={this.switchNameHandler.bind(this, 'Max!')}
             />
+            {this.state.persons.map(person => {
+              return <Person
+                  name={person.name}
+                  age={person.age} />
+            })}
           </div>
       );
     }
