@@ -4,6 +4,8 @@ import './App.css';
 import Person from './Person/Person';
 import UserImput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
+import Validation from './Validation/Validation';
+import Char from './Char/Char';
 
 class App extends Component {
   state = {
@@ -14,7 +16,11 @@ class App extends Component {
     ],
     otherState: 'Cocococococo',
     userName: 'Username State',
-    showPersons: false
+    showPersons: false,
+    paragraph: {
+      text: '',
+      length: 0
+    }
   };
 
   switchNameHandler = (newName) => {
@@ -70,6 +76,30 @@ class App extends Component {
     this.setState({showPersons: !doesShow});
   };
 
+  outputLengthHandler = (event) => {
+    const inputText = event.target.value;
+    const inputTextLength = inputText.length;
+    this.setState({paragraph: {text: inputText, length: inputTextLength}});
+  };
+
+  removeCharHandler = (index) => {
+    // Recover paragraph object from state
+    const paragraph = {...this.state.paragraph};
+    // Split our paragraph text into single chars
+    const paragraphText = [...paragraph.text];
+
+    // Remove char at clicked position
+    paragraphText.splice(index, 1);
+
+    // Join our array of chars again into a single string and update it
+    paragraph.text = paragraphText.join('');
+    // Update string length
+    paragraph.length = paragraphText.length;
+
+    // Update state with the updated paragraph
+    this.setState({paragraph: paragraph});
+  };
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -118,6 +148,26 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
           <h1>Hi, I'm a React App</h1>
+
+        <hr/>
+
+        <h1>Ejercicio de listas y cosas locas</h1>
+        <input type="text" onChange={this.outputLengthHandler} value={this.state.paragraph.text}/>
+        <p>Introduced text: {this.state.paragraph.text}</p>
+        <p>Text length: {this.state.paragraph.length}</p>
+        <Validation paragraph={this.state.paragraph}/>
+        <p>Char list:</p>
+        <ul>
+          {[...this.state.paragraph.text].map((character, index) => {
+            return <Char
+                key={index}
+                character={character}
+                click={() => this.removeCharHandler(index)}
+            />
+          })}
+        </ul>
+        <hr/>
+
         <UserImput userName={this.state.userName} changed={this.nameStateChangeHandler}/>
         <UserOutput userName='Jesús'/>
         <UserOutput userName={this.state.userName}/>
