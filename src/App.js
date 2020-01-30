@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Radium, {StyleRoot} from "radium";
+
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
@@ -107,7 +109,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      // ':hover': {
+      //   backgroundColor: 'lightgreen',
+      //   color: 'black'
+      // }
     };
 
     let persons = null;
@@ -142,6 +148,10 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
     }
 
     //let classes = ['red', 'bold'].join(' '); // "red bold"
@@ -156,44 +166,46 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-          <h1 className={classes.join(' ')}>Hi, I'm a React App</h1>
+        <StyleRoot>
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Welcome to React</h1>
+            </header>
+            <h1 className={classes.join(' ')}>Hi, I'm a React App</h1>
 
-        <hr/>
+            <hr/>
 
-        <h1>Ejercicio de listas y cosas locas</h1>
-        <input type="text" onChange={this.outputLengthHandler} value={this.state.paragraph.text}/>
-        <p>Introduced text: {this.state.paragraph.text}</p>
-        <p>Text length: {this.state.paragraph.length}</p>
-        <Validation paragraph={this.state.paragraph}/>
-        <p>Char list:</p>
-        <ul>
-          {[...this.state.paragraph.text].map((character, index) => {
-            return <Char
-                key={index}
-                character={character}
-                click={() => this.removeCharHandler(index)}
-            />
-          })}
-        </ul>
-        <hr/>
+            <h1>Ejercicio de listas y cosas locas</h1>
+            <input type="text" onChange={this.outputLengthHandler} value={this.state.paragraph.text}/>
+            <p>Introduced text: {this.state.paragraph.text}</p>
+            <p>Text length: {this.state.paragraph.length}</p>
+            <Validation paragraph={this.state.paragraph}/>
+            <p>Char list:</p>
+            <ul>
+              {[...this.state.paragraph.text].map((character, index) => {
+                return <Char
+                    key={index}
+                    character={character}
+                    click={() => this.removeCharHandler(index)}
+                />
+              })}
+            </ul>
+            <hr/>
 
-        <UserImput userName={this.state.userName} changed={this.nameStateChangeHandler}/>
-        <UserOutput userName='Jesús'/>
-        <UserOutput userName={this.state.userName}/>
-        <UserOutput userName='Loco'/>
+            {/*<UserImput userName={this.state.userName} changed={this.nameStateChangeHandler}/>*/}
+            {/*<UserOutput userName='Jesús'/>*/}
+            {/*<UserOutput userName={this.state.userName}/>*/}
+            {/*<UserOutput userName='Loco'/>*/}
 
-        <button
-            style={style}
-            onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {persons}
-      </div>
+            <button
+                style={style}
+                onClick={this.togglePersonsHandler}>Toggle Persons</button>
+            {persons}
+          </div>
+        </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
