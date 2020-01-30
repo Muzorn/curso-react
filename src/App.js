@@ -144,13 +144,24 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
+    //let classes = ['red', 'bold'].join(' '); // "red bold"
+
+    let classes = [];
+
+    if (this.state.persons.length <= 2) {
+      classes.push('red'); // classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold'); // classes = ['red', 'bold'] porque si vamos quitando uno a uno...
+    }
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-          <h1>Hi, I'm a React App</h1>
+          <h1 className={classes.join(' ')}>Hi, I'm a React App</h1>
 
         <hr/>
 
