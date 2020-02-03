@@ -118,7 +118,7 @@ class App extends Component {
     };
 
     const StyledButton = styled.button`
-      background-color: green;
+      background-color: ${props => props.alt ? 'red' : 'green'};
       color: white;
       font: inherit;
       border: 1px solid blue;
@@ -126,7 +126,7 @@ class App extends Component {
       cursor: pointer;
       
       &:hover {
-        background-color: lightgreen;
+        background-color: ${props => props.alt ? ' salmon' : 'lightgreen'};
         color: black;
       }
     `;
@@ -214,6 +214,7 @@ class App extends Component {
             {/*<UserOutput userName='Loco'/>*/}
 
             <StyledButton
+                alt={this.state.showPersons}
                 onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
             {persons}
           </div>
