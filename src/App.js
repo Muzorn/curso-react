@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Radium, {StyleRoot} from "radium";
+import styled from 'styled-components';
 
 import logo from './logo.svg';
 import './App.css';
@@ -116,6 +117,20 @@ class App extends Component {
       // }
     };
 
+    const StyledButton = styled.button`
+      background-color: green;
+      color: white;
+      font: inherit;
+      border: 1px solid blue;
+      padding: 8px;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: lightgreen;
+        color: black;
+      }
+    `;
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -198,9 +213,8 @@ class App extends Component {
             {/*<UserOutput userName={this.state.userName}/>*/}
             {/*<UserOutput userName='Loco'/>*/}
 
-            <button
-                style={style}
-                onClick={this.togglePersonsHandler}>Toggle Persons</button>
+            <StyledButton
+                onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
             {persons}
           </div>
         </StyleRoot>
