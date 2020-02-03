@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Radium, {StyleRoot} from "radium";
 import styled from 'styled-components';
 
+import classes from './App.css';
+
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
@@ -169,25 +171,29 @@ class App extends Component {
       };
     }
 
-    //let classes = ['red', 'bold'].join(' '); // "red bold"
+    let btnClass = [classes.Button];
+    btnClass.push(classes.Red);
+    // let btnClass = [];
 
-    let classes = [];
+    //let assignedClasses = ['red', 'bold'].join(' '); // "red bold"
+
+    let assignedClasses = [];
 
     if (this.state.persons.length <= 2) {
-      classes.push('red'); // classes = ['red']
+      assignedClasses.push('red'); // assignedClasses = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['red', 'bold'] porque si vamos quitando uno a uno...
+      assignedClasses.push('bold'); // assignedClasses = ['red', 'bold'] porque si vamos quitando uno a uno...
     }
 
     return (
         <StyleRoot>
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
+          <div className={classes.App}>
+            <header className={classes.AppHeader}>
+              <img src={logo} className={classes.AppLogo} alt="logo" />
+              <h1 className={classes.AppTitle}>Welcome to React</h1>
             </header>
-            <h1 className={classes.join(' ')}>Hi, I'm a React App</h1>
+            <h1 className={assignedClasses.join(' ')}>Hi, I'm a React App</h1>
 
             <hr/>
 
@@ -213,6 +219,7 @@ class App extends Component {
             {/*<UserOutput userName={this.state.userName}/>*/}
             {/*<UserOutput userName='Loco'/>*/}
 
+            {/*className={btnClass.join(' ')}*/}
             <StyledButton
                 alt={this.state.showPersons}
                 onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
