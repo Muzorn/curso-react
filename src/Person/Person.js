@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import './Person.css';
+import classes from './Person.css';
 
 const person = (props) => {
   // const style = {
@@ -25,11 +25,11 @@ const person = (props) => {
 
     return (
         // <div className="Person" style={style}>
-        <StyledDiv>
+        <div className={classes.Person}>
             <p onClick={props.click}>I'm a {props.name} and I am {Math.floor(Math.random() * 30)} years old!!</p>
             <p>{props.children}</p>
             <input onChange={props.changed} value={props.name}/>
-        </StyledDiv>
+        </div>
     )
 };
 
