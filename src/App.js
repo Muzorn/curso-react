@@ -11,6 +11,7 @@ import UserImput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -154,12 +155,13 @@ class App extends Component {
             {/*    click={this.switchNameHandler.bind(this, 'Max!')}*/}
             {/*/>*/}
             {this.state.persons.map((person, index) => {
-              return <Person
+              return <ErrorBoundary key={person.id}>
+                <Person
                   click={() => this.deletePersonHandler(index)}
                   changed={(event) => this.nameChangeHandler(event, person.id)}
-                  key={person.id}
                   name={person.name}
                   age={person.age} />
+              </ErrorBoundary>
             })}
           </div>
       );
