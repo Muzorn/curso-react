@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 import classes from './App.css';
 
-import logo from './logo.svg';
+import logo from '../assets/img/logo.svg';
 import './App.css';
-import Person from './Person/Person';
-import UserImput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
-import Validation from './Validation/Validation';
-import Char from './Char/Char';
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Person from '../components/Persons/Person/Person';
+import UserImput from '../components/UserInput/UserInput';
+import UserOutput from '../components/UserOutput/UserOutput';
+import Validation from '../components/Validation/Validation';
+import Char from '../components/Char/Char';
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
