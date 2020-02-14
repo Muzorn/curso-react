@@ -6,7 +6,9 @@ import classes from './App.css';
 
 import logo from '../assets/img/logo.svg';
 import './App.css';
+
 import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
 import UserImput from '../components/UserInput/UserInput';
 import UserOutput from '../components/UserOutput/UserOutput';
 import Validation from '../components/Validation/Validation';
@@ -154,15 +156,20 @@ class App extends Component {
             {/*    age={this.state.persons[2].age}*/}
             {/*    click={this.switchNameHandler.bind(this, 'Max!')}*/}
             {/*/>*/}
-            {this.state.persons.map((person, index) => {
-              return <ErrorBoundary key={person.id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)}
-                  changed={(event) => this.nameChangeHandler(event, person.id)}
-                  name={person.name}
-                  age={person.age} />
-              </ErrorBoundary>
-            })}
+            {/*{this.state.persons.map((person, index) => {*/}
+            {/*  return <ErrorBoundary key={person.id}>*/}
+            {/*    <Person*/}
+            {/*      click={() => this.deletePersonHandler(index)}*/}
+            {/*      changed={(event) => this.nameChangeHandler(event, person.id)}*/}
+            {/*      name={person.name}*/}
+            {/*      age={person.age} />*/}
+            {/*  </ErrorBoundary>*/}
+            {/*})}*/}
+            <Persons
+                persons={this.state.persons}
+                clicked={this.deletePersonHandler}
+                changed={this.nameChangeHandler}
+            />
           </div>
       );
 
