@@ -7,6 +7,7 @@ import classes from './App.css';
 import logo from '../assets/img/logo.svg';
 import './App.css';
 
+import Cockpit from '../components/Cockpit/Cockpit';
 import Person from '../components/Persons/Person/Person';
 import Persons from '../components/Persons/Persons';
 import UserImput from '../components/UserInput/UserInput';
@@ -139,39 +140,11 @@ class App extends Component {
     let persons = null;
 
     if (this.state.showPersons) {
-      persons = (
-          <div>
-            {/*<Person*/}
-            {/*    name={this.state.persons[0].name}*/}
-            {/*    age={this.state.persons[0].age}*/}
-            {/*/>*/}
-            {/*<Person*/}
-            {/*    name={this.state.persons[1].name}*/}
-            {/*    age={this.state.persons[1].age}*/}
-            {/*    changed={this.nameChangeHandler}>*/}
-            {/*  My Hobbies: Racing*/}
-            {/*</Person>*/}
-            {/*<Person*/}
-            {/*    name={this.state.persons[2].name}*/}
-            {/*    age={this.state.persons[2].age}*/}
-            {/*    click={this.switchNameHandler.bind(this, 'Max!')}*/}
-            {/*/>*/}
-            {/*{this.state.persons.map((person, index) => {*/}
-            {/*  return <ErrorBoundary key={person.id}>*/}
-            {/*    <Person*/}
-            {/*      click={() => this.deletePersonHandler(index)}*/}
-            {/*      changed={(event) => this.nameChangeHandler(event, person.id)}*/}
-            {/*      name={person.name}*/}
-            {/*      age={person.age} />*/}
-            {/*  </ErrorBoundary>*/}
-            {/*})}*/}
-            <Persons
-                persons={this.state.persons}
-                clicked={this.deletePersonHandler}
-                changed={this.nameChangeHandler}
-            />
-          </div>
-      );
+      persons = <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangeHandler}
+      />;
 
       style.backgroundColor = 'red';
       style[':hover'] = {
@@ -186,15 +159,6 @@ class App extends Component {
 
     //let assignedClasses = ['red', 'bold'].join(' '); // "red bold"
 
-    let assignedClasses = [];
-
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push('red'); // assignedClasses = ['red']
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push('bold'); // assignedClasses = ['red', 'bold'] porque si vamos quitando uno a uno...
-    }
-
     return (
         <StyleRoot>
           <div className={classes.App}>
@@ -202,7 +166,6 @@ class App extends Component {
               <img src={logo} className={classes.AppLogo} alt="logo" />
               <h1 className={classes.AppTitle}>Welcome to React</h1>
             </header>
-            <h1 className={assignedClasses.join(' ')}>Hi, I'm a React App</h1>
 
             <hr/>
 
@@ -229,9 +192,10 @@ class App extends Component {
             {/*<UserOutput userName='Loco'/>*/}
 
             {/*className={btnClass.join(' ')}*/}
-            <StyledButton
-                alt={this.state.showPersons}
-                onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
+            <Cockpit
+              showPersons={this.state.showPersons}
+              persons={this.state.persons}
+              clicked={this.togglePersonsHandler}/>
             {persons}
           </div>
         </StyleRoot>
