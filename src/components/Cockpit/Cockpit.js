@@ -17,6 +17,10 @@ const cockpit = (props) => {
     assignedClasses.push(classes.bold); // assignedClasses = ['red', 'bold'] porque si vamos quitando uno a uno...
   }
 
+  let list = [ 1, 2, 3 ]
+      [ list[1], list[0] ] = [list[0], list[1]]
+  console.log(list)
+
   return (
       <div className={classes.Cockpit}>
         <h1 className={assignedClasses.join(' ')}>Hi, I'm a React App</h1>
